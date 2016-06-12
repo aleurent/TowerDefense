@@ -1,0 +1,101 @@
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\Game1.exe
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\Game1.pdb
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\MonoGame.Framework.dll
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.dll
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.XInput.dll
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\MonoGame.Framework.xml
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.xml
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.XInput.xml
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\obj\x86\Debug\Game1.csprojResolveAssemblyReference.cache
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\obj\x86\Debug\Game1.exe
+c:\users\leure\documents\visual studio 2015\Projects\Game1\Game1\obj\x86\Debug\Game1.pdb
+C:\Users\leure\Documents\Visual Studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\grass.png
+C:\Users\leure\Documents\Visual Studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\path.png
+C:\Users\leure\Documents\Visual Studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\enemy.gif
+C:\Users\leure\Documents\Visual Studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\arrowtower.png
+C:\Users\leure\Documents\Visual Studio 2015\Projects\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\bullet.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\obj\x86\Debug\Game1.exe
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\obj\x86\Debug\Game1.pdb
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Game1.exe
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Game1.pdb
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.RawInput.dll
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.RawInput.xml
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\obj\x86\Debug\Game1.csprojResolveAssemblyReference.cache
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Arial.xnb
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\bones.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\bones_over.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\bones_pressed.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Panel\coin.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\fireball.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\goomba.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Level\grass.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Level\ground.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Panel\life.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Panel\panel.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Level\road.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Panel\start.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Panel\startPressed.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Panel\statOver.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\toad.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\toad_over.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\toad_pressed.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Panel\wave.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\gameInfo.xnb
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\browser.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\browser_over.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\browser_pressed.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\donkeykong.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\donkeykong_over.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\donkeykong_pressed.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\marioYoshi.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\marioYoshi_over.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\marioYoshi_pressed.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\paratroopa.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\paratroopa_over.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\paratroopa_pressed.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\wario.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\wario_over.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Tower\wario_pressed.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\banane.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\blueshellcup.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\bobomb.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\bulletbill.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\goombafly.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\goombatrol.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\piranhaplant.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\redrocket.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\thundercloud.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\yoshiegg.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\toolTip.xnb
