@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/leure/Documents/RepoGit/TowerDefense/Game1/Game1/Content/Arial.spritefont</SourceFile>
-  <SourceTime>2016-06-04T19:07:52.9945018+02:00</SourceTime>
-  <DestFile>C:/Users/leure/Documents/RepoGit/TowerDefense/Game1/Game1/Content/bin/Windows/Arial.xnb</DestFile>
-  <DestTime>2016-06-10T19:29:20.176713+02:00</DestTime>
+  <SourceFile>C:/Users/leure/Source/Repos/Tower Defense/Game1/Game1/Content/Arial.spritefont</SourceFile>
+  <SourceTime>2016-06-18T16:41:31.4552129+02:00</SourceTime>
+  <DestFile>C:/Users/leure/Source/Repos/Tower Defense/Game1/Game1/Content/bin/Windows/Arial.xnb</DestFile>
+  <DestTime>2016-06-18T16:41:50.2440113+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2016-03-30T08:36:08+02:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

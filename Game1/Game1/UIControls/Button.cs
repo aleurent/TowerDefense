@@ -75,20 +75,23 @@ namespace Game1.UIControls
         /// <param name="spriteBatch">A SpriteBatch that has been started</param>
         public override void Draw(SpriteBatch spriteBatch)
         {
-            switch (_state)
+            if (_texture != null && _hoverTexture != null && _pressedTexture != null)
             {
-                case ButtonStatus.Normal:
-                    spriteBatch.Draw(_texture, _bounds, Color.White);
-                    break;
-                case ButtonStatus.MouseOver:
-                    spriteBatch.Draw(_hoverTexture, _bounds, Color.White);
-                    break;
-                case ButtonStatus.Pressed:
-                    spriteBatch.Draw(_pressedTexture, _bounds, Color.White);
-                    break;
-                default:
-                    spriteBatch.Draw(_texture, _bounds, Color.White);
-                    break;
+                switch (_state)
+                {
+                    case ButtonStatus.Normal:
+                        spriteBatch.Draw(_texture, _bounds, Color.White);
+                        break;
+                    case ButtonStatus.MouseOver:
+                        spriteBatch.Draw(_hoverTexture, _bounds, Color.White);
+                        break;
+                    case ButtonStatus.Pressed:
+                        spriteBatch.Draw(_pressedTexture, _bounds, Color.White);
+                        break;
+                    default:
+                        spriteBatch.Draw(_texture, _bounds, Color.White);
+                        break;
+                }
             }
         }
     }

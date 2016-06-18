@@ -45,7 +45,10 @@ namespace Game1.UIControls
 
             // Trigger the event if needed
             if (_state == ButtonStatus.Pressed && Mouse.GetState().LeftButton == ButtonState.Released)
+            {
                 Enemy.WaveManager.GetInstance().StartNextWave();
+                _texture = null;
+            }
         }
     }
 }

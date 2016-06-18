@@ -48,11 +48,11 @@ namespace Game1.Tower
         }
 
         /// <summary>
-        /// Update method cals by the daughter class
+        /// Method to update the target and the bullets
         /// </summary>
         /// <param name="gameTime">Instance of the gametime</param>
         /// <param name="enemies">List of enemies present in the game</param>
-        public virtual void Update(GameTime gameTime, List<Enemy.Enemy> enemies)
+        public void Update(GameTime gameTime, List<Enemy.Enemy> enemies)
         {
             base.Update(gameTime);
 
@@ -116,24 +116,18 @@ namespace Game1.Tower
                 bullet.Draw(spriteBatch);
         }
 
+        /// <summary>
+        /// Method to generate a tooltip from tower properties
+        /// </summary>
+        /// <param name="tower"></param>
+        /// <returns>The string corresponding to the tooltip</returns>
         static public string GenerateToolTip(XElement tower)
         {
             // Add the cost of the tower
-            string toolTip = String.Format("Cost: {0} - ", tower.Element("cost").Value);
-
-            // Add the damage
-            string stringToAdd = "small";
-            int damage = Int32.Parse(tower.Element("damage").Value);
-            if (damage <= 10)
-                stringToAdd = "small";
-            else if (damage > 100)
-                stringToAdd = "high";
-            else
-                stringToAdd = "medium";
-            toolTip += String.Format("{0} damage\n", stringToAdd);
+            string toolTip = String.Format("Cost: {0} - Damage: {1}\n", tower.Element("cost").Value, tower.Element("damage").Value);
 
             // Add the speed
-            stringToAdd = "small";
+            string stringToAdd = "small";
             float speed = float.Parse(tower.Element("speed").Value);
             if (speed > 0.8f)
                 stringToAdd = "small";

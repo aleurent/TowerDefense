@@ -4,8 +4,8 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/leure/Documents/RepoGit/TowerDefense/Game1/Game1/Content/Arial.spritefont</File>
-    <File>C:/Users/leure/Documents/RepoGit/TowerDefense/Game1/Game1/Content/gameInfo.spritefont</File>
-    <File>C:/Users/leure/Documents/RepoGit/TowerDefense/Game1/Game1/Content/toolTip.spritefont</File>
+    <File>C:/Users/leure/Source/Repos/Tower Defense/Game1/Game1/Content/Arial.spritefont</File>
+    <File>C:/Users/leure/Source/Repos/Tower Defense/Game1/Game1/Content/gameInfo.spritefont</File>
+    <File>C:/Users/leure/Source/Repos/Tower Defense/Game1/Game1/Content/toolTip.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>

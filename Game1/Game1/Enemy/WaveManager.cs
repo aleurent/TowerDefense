@@ -70,7 +70,7 @@ namespace Game1.Enemy
         {
             _level = level;
             _player = player;
-            _numberOfWaves = 1;
+            _numberOfWaves = 30;
             _gameEnd = false;
 
             // Create the wave and add them in the queue

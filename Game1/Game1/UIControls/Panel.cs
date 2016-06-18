@@ -51,15 +51,14 @@ namespace Game1.UIControls
 
             // Define the game management button to manage the start/stop/resume
             Texture2D startTexture = content.Load<Texture2D>("Content\\Graphics\\Panel\\start");
-            Vector2 startPosition = new Vector2((Position.X + ((_texture.Width - startTexture.Width)/2)), 
-                                                (_texture.Height - startTexture.Height));
+            Vector2 startPosition = new Vector2((Position.X - startTexture.Width) / 2, (_texture.Height - startTexture.Height) / 2);
             _startButton = new GameStarter(content, startTexture, startPosition);
 
             // Load the font used for the text display in the panel
             _font = content.Load<SpriteFont>("Content\\gameInfo");
 
             // Define the instance of the game information part
-            _gameInfo = new GameInformation(content, _font, new Vector2 (Position.X + 10, 5));
+            _gameInfo = new GameInformation(content, _font, new Vector2 (Position.X + 2, 5));
 
             // Fill the list of tower the user can build
             FillTowerList(content, towers);
@@ -106,6 +105,8 @@ namespace Game1.UIControls
             // Draw the list of towers
             string text = string.Format("======= Towers =======");
             spriteBatch.DrawString(_font, text, new Vector2(_position.X + 10, 130), Color.White);
+            text = string.Format("===== Towers Info =====");
+            spriteBatch.DrawString(_font, text, new Vector2(_position.X + 10, _texture.Height - 90), Color.White);
             foreach (TowerButton button in _towerButton)
                 button.Draw(spriteBatch, _font);
         }

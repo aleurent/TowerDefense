@@ -55,8 +55,11 @@ namespace Game1
         /// <param name="gameTime">Instance of the gametime</param>
         public virtual void Update(GameTime gameTime)
         {
-            _center = new Vector2(_position.X + _texture.Width / 2, _position.Y + _texture.Height / 2);
-            _origin = new Vector2(_texture.Width / 2, _texture.Height / 2);
+            if (_position != null && _texture != null)
+            {
+                _center = new Vector2(_position.X + _texture.Width / 2, _position.Y + _texture.Height / 2);
+                _origin = new Vector2(_texture.Width / 2, _texture.Height / 2);
+            }
         }
 
         /// <summary>
@@ -65,7 +68,10 @@ namespace Game1
         /// <param name="spriteBatch">Instance of spritebatch we use for drawing</param>
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, _center, null, Color.White, _rotation, _origin, 1.0f, SpriteEffects.None, 0);
+            if (_center != null && _texture != null && _origin != null)
+            {
+                spriteBatch.Draw(_texture, _center, null, Color.White, _rotation, _origin, 1.0f, SpriteEffects.None, 0);
+            }
         }
     }
 }

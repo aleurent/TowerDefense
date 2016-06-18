@@ -73,7 +73,7 @@ namespace Game1.UIControls
 
             // Draw the tooltip if needed
             if(_state == ButtonStatus.MouseOver && !_tooltipText.Equals(""))
-                spriteBatch.DrawString(_toolTipFont, _tooltipText, new Vector2(670, 90), Color.White);
+                spriteBatch.DrawString(_toolTipFont, _tooltipText, new Vector2(670, 385), Color.White);
         }
     }
 }

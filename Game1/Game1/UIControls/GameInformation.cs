@@ -26,6 +26,9 @@ namespace Game1.UIControls
         // Position of the text
         private Vector2 _position;
 
+        // Font used for the display of wave information
+        private SpriteFont _waveInfoFont;
+
         /// <summary>
         /// Constructor of the game information display (lives, money, wave number)
         /// </summary>
@@ -40,6 +43,9 @@ namespace Game1.UIControls
             _waveNumberTexture = content.Load<Texture2D>("Content\\Graphics\\Panel\\wave");
             _position = position;
             _font = font;
+
+            // Load the SpriteFont for the display of the tooltip
+            _waveInfoFont = content.Load<SpriteFont>("Content\\toolTip");
         }
 
         /// <summary>
@@ -52,17 +58,29 @@ namespace Game1.UIControls
             // Draw the number of remaining lives
             spriteBatch.Draw(_livesTexture, _position);
             string text = string.Format("{0}/{1}", player.CurrentLives, player.OriginalLives);
-            spriteBatch.DrawString(_font, text, new Vector2(_position.X + 35, 15), Color.White);
+            spriteBatch.DrawString(_font, text, new Vector2(_position.X + 30, 15), Color.White);
 
             // Draw the current amount of money
-            spriteBatch.Draw(_moneyTexture, new Vector2(_position.X + 110, _position.Y + 5));
+            spriteBatch.Draw(_moneyTexture, new Vector2(_position.X + 95, _position.Y + 5));
             text = string.Format(" {0}", player.Money);
-            spriteBatch.DrawString(_font, text, new Vector2(_position.X + 140, 15), Color.White);
+            spriteBatch.DrawString(_font, text, new Vector2(_position.X + 120, 15), Color.White);
 
-            // Draw the wave number of the finish is game at the end
-            spriteBatch.Draw(_waveNumberTexture, new Vector2(_position.X + 50, _moneyTexture.Height + 20));
+            // Draw the wave number
+            spriteBatch.Draw(_waveNumberTexture, new Vector2(_position.X + 150, _position.Y + 5));
             text = string.Format("{0}/{1}", Enemy.WaveManager.GetInstance().Round, Enemy.WaveManager.GetInstance().WavesNumber);
-            spriteBatch.DrawString(_font, text, new Vector2(_position.X + 90, _moneyTexture.Height + 25), Color.White);
+            spriteBatch.DrawString(_font, text, new Vector2(_position.X + 185, 15), Color.White);
+
+            // Draw the wave information
+            text = string.Format("======= Wave Info ======");
+            spriteBatch.DrawString(_font, text, new Vector2(_position.X + 10, 50), Color.White);
+            var curWave = Enemy.WaveManager.GetInstance().CurrentWave;
+            if (curWave != null)
+            {
+                text = string.Format("current wave enemy: {0}", curWave.EnemyName.Split('\\').Last());
+                spriteBatch.DrawString(_waveInfoFont, text, new Vector2(_position.X + 05, 80), Color.White);
+                text = string.Format("number of enemy: {0} - health: {1}", curWave.NumberEnemies, curWave.EnemyHealth);
+                spriteBatch.DrawString(_waveInfoFont, text, new Vector2(_position.X + 05, 100), Color.White);
+            }
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Game1.Enemy
         private int _enemiesSpawned = 0;
         // Boolean we use to know when the game start
         private bool _startWave;
+        private int _health;
 
         private Level _level; 
         private Player _player;
@@ -34,6 +35,9 @@ namespace Game1.Enemy
         public bool RoundOver { get { return _enemiesList.Count == 0 && _enemiesSpawned == _numOfEnemies; } }
         public int RoundNumber { get { return _waveNumber; } }
         public List<Enemy> Enemies { get { return _enemiesList; } }
+        public string EnemyName {  get { return _enemyTexture.Name; } }
+        public int NumberEnemies { get { return _numOfEnemies; } }
+        public int EnemyHealth { get { return _health; } }
 
         /// <summary>
         /// Constructor of a wave
@@ -50,6 +54,7 @@ namespace Game1.Enemy
             _player = player;
             _numOfEnemies = nbEnemies;
             _enemyTexture = enemyTexture;
+            _health = 50 + (50 * _waveNumber);
             _startWave = false;
         }
 
@@ -115,7 +120,7 @@ namespace Game1.Enemy
         /// </summary>
         private void AddEnemy()
         {
-            Enemy newEnemy = new Enemy(_enemyTexture, _level.Waypoints.Peek(), 50+(50*_waveNumber), 2+(_waveNumber/3), 0.6f);
+            Enemy newEnemy = new Enemy(_enemyTexture, _level.Waypoints.Peek(), _health, 2+(_waveNumber/3), 0.6f);
             newEnemy.SetWaypoints(_level.Waypoints);
             _enemiesList.Add(newEnemy);
             _spawnTimer = 0;
