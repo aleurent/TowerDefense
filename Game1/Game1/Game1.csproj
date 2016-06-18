@@ -38,14 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Tower\BonesTower.cs" />
     <Compile Include="Tower\Bullet.cs" />
-    <Compile Include="Tower\BrowserTower.cs" />
-    <Compile Include="Tower\DonkeyKongTower.cs" />
-    <Compile Include="Tower\MarioYoshiTower.cs" />
-    <Compile Include="Tower\ParatroopaTower.cs" />
-    <Compile Include="Tower\ToadTower.cs" />
-    <Compile Include="Tower\WarioTower.cs" />
     <Compile Include="Enemy\Enemy.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Level.cs" />
@@ -67,7 +60,9 @@
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Graphics\Enemy\banane.png">
@@ -98,6 +93,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Enemy\yoshiegg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Graphics\gameover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Graphics\Panel\wave.png">
@@ -199,6 +197,13 @@
     <Content Include="Content\Graphics\Tower\wario_pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Graphics\winner.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\MarioConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -210,12 +215,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\gameInfo.xnb">
+    <Content Include="Content\gameInfo.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\toolTip.xnb">
+    </Content>
+    <Content Include="Content\toolTip.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

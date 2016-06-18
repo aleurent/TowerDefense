@@ -1,6 +1,7 @@
 ﻿// System includes
 using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +22,10 @@ namespace Game1
         private int _originalLives;
         private List<Tower.Tower> _towers = new List<Tower.Tower>();
         private Level _level;
-        private ContentManager _content;
+        private IEnumerable<XElement> _inputTowers;
         private string _towerType;
         private Texture2D _bulletTexture;
+        private ContentManager _content;
 
         // Mouse state for the current frame
         private MouseState _mouseState;
@@ -41,25 +43,40 @@ namespace Game1
 
         // ----------- Properties ----------
         public int Money { get { return _money; } set { _money = value; } }
-        public int CurrentLives { get { return _lives; } set { _lives = value; } }
         public int OriginalLives { get { return _originalLives; } }
         public string TowerType { set { _towerType = value; } }
+        public int CurrentLives
+        {
+            get { return _lives; }
+            set
+            {
+                _lives = value;
+                if (_lives == 0)
+                    LooseGame?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        // Property to manage the end of the game in case of loose
+        public EventHandler LooseGame = null;
 
         /// <summary>
         /// Constructor of a player
         /// </summary>
-        /// <param name="content">Instance of the content manager we use later to load data</param>
+        /// <param name="towers">list of towers read from the xml configuration file</param>
+        /// <param name="content">Instance of the content manager used to load data</param>
+        /// <param name="bulletTexture">Texture of the bullet used in the game</param>
         /// <param name="level">Instance of the existing level</param>
-        public Player(ContentManager content, Level level)
+        public Player(IEnumerable<XElement> towers, ContentManager content, Texture2D bulletTexture, Level level)
         {
             _level = level;
             _content = content;
+            _inputTowers = towers;
             _money = 20;
             _lives = _originalLives = 20;
             _towerType = "";
 
             // Load the texture of the bullet
-            _bulletTexture = content.Load<Texture2D>("Content\\Graphics\\Tower\\fireball");
+            _bulletTexture = bulletTexture;
         }
 
         /// <summary>
@@ -110,23 +127,32 @@ namespace Game1
         /// </summary>
         private void AddTower()
         {
-            Type newTowerType = Type.GetType("Game1.Tower." + _towerType);
-            if (newTowerType != null)
+            if (!_towerType.Equals(""))
             {
-                Tower.Tower newTower = (Tower.Tower)Activator.CreateInstance(newTowerType, 
-                                                                             new Object[] { _content,
-                                                                                            new Vector2(_tileX, _tileY),
-                                                                                            _bulletTexture});
+                // Search the tower into the available tower in the list
+                var foundTower = from tower in _inputTowers
+                                 where (string)tower.Element("Texture").Value == _towerType
+                                 select tower;
 
-                // Check if the user has enough money to build the tower
-                if (newTower.Cost <= _money)
+                if (foundTower != null && foundTower.Count() == 1)
                 {
-                    _towers.Add(newTower);
-                    _money -= newTower.Cost;
-                }
-            }
+                    var textureName = foundTower.First().Element("Texture").Value;
+                    Texture2D towerTexture = _content.Load<Texture2D>("Content\\Graphics\\Tower\\" + textureName);
+                    Tower.Tower newTower = new Tower.Tower(new Vector2(_tileX, _tileY), 
+                                                            _bulletTexture, 
+                                                            towerTexture, 
+                                                            foundTower.First());
 
-            _towerType = "";
+                    // Check if the user has enough money to build the tower
+                    if (newTower.Cost <= _money)
+                    {
+                        _towers.Add(newTower);
+                        _money -= newTower.Cost;
+                    }
+                }
+
+                _towerType = "";
+            }
         }
 
         /// <summary>

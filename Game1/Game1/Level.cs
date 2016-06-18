@@ -42,7 +42,7 @@ namespace Game1
             _texturesList.Add(content.Load<Texture2D>("Content\\Graphics\\Level\\ground"));
 
             // Init the map and the queue of waypoints
-            initFirstMap();
+            InitFirstMap();
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Game1
         /// <summary>
         /// Method to init our map level and waypoints
         /// </summary>
-        private void initFirstMap()
+        private void InitFirstMap()
         {
             // Define the map of the level
             _levelMap = new int[,]

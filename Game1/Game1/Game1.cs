@@ -1,8 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿// System includes
+using System;
+using System.IO;
+using System.Collections;
+using System.Collections.Generic;
+using System.Xml.Linq;
+
+// Xna includes
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
 
 namespace Game1
 {
@@ -18,7 +24,9 @@ namespace Game1
         Player _player = null;
         UIControls.Panel _mainPanel = null;
         Enemy.WaveManager _waveManager = null;
-        SpriteFont _font;
+        Texture2D _winTexture = null;
+        Texture2D _looseTexture = null;
+        bool _endGame = false;
 
         /// <summary>
         /// Constructor of the game
@@ -35,6 +43,9 @@ namespace Game1
 
             // Set the name of the window
             Window.Title = "Mario Tower Defense";
+
+            // Instantiate the waveManager
+            _waveManager = Enemy.WaveManager.GetInstance();
         }
 
         /// <summary>
@@ -58,18 +69,37 @@ namespace Game1
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            // Load the xml file
+            XElement xelement = XElement.Load("Content\\MarioConfig.xml");
+            if (xelement == null)
+                System.Environment.Exit(0);
+
+            // Read the enemy textures and save them into the waveManager
+            foreach (XElement xEnemy in xelement.Descendants("Enemy"))
+            {
+                if(xEnemy.Element("Texture") != null)
+                {
+                    var textureName = xEnemy.Element("Texture").Value;
+                    var enemyTexture = Content.Load<Texture2D>("Content\\Graphics\\Enemy\\" + textureName);
+                    _waveManager.AddEnemyTexture(enemyTexture);
+                }
+            }
+
             // Initialise the level of the game
             _level = new Level(Content);
 
             // Instantiate the player
-            _player = new Player(Content, _level);
+            IEnumerable<XElement> xTower = xelement.Descendants("Tower");
+            Texture2D bulletTexture = Content.Load<Texture2D>("Content\\Graphics\\Tower\\fireball");
+            _player = new Player(xTower, Content, bulletTexture, _level);
+            _player.LooseGame += EndGame;
 
-            // Initialise the waveManager
-            _waveManager = Enemy.WaveManager.getInstance();
-            _waveManager.initialise(_level, _player, Content);
+            // Init the waveManager
+            _waveManager.Initialise(_level, _player);
+            _waveManager.WinGame += EndGame;
 
             // Define the Main Panel of the game
-            _mainPanel = new UIControls.Panel(Content, new Vector2(_level.Width * _level.TextureWidth, 0));
+            _mainPanel = new UIControls.Panel(Content, new Vector2(_level.Width * _level.TextureWidth, 0), xTower);
             _mainPanel.Clicked += TowerButtonCallback;
 
             // Define the size of the window
@@ -77,8 +107,9 @@ namespace Game1
             _graphics.PreferredBackBufferHeight = _level.Height * _level.TextureHeight;
             _graphics.ApplyChanges();
 
-            // Load font used for the end of the game
-            _font = Content.Load<SpriteFont>("Content\\Arial");
+            // Load the winner and loose images
+            _looseTexture = Content.Load<Texture2D>("Content\\Graphics\\gameover");
+            _winTexture = Content.Load<Texture2D>("Content\\Graphics\\winner");
         }
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -99,16 +130,16 @@ namespace Game1
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            if (!_waveManager.GameEnd)
+            if (!_endGame)
             {
-                // Update the wave
-                _waveManager.Update(gameTime);
+                // Update the main Panel
+                _mainPanel.Update(gameTime);
 
                 // Update the player
                 _player.Update(gameTime, _waveManager.Enemies);
 
-                // Update the main Panel
-                _mainPanel.Update(gameTime);
+                // Update the wave
+                _waveManager.Update(gameTime);
 
                 base.Update(gameTime);
             }
@@ -125,7 +156,7 @@ namespace Game1
             // Start drawing
             _spriteBatch.Begin();
 
-            if (!_waveManager.GameEnd)
+            if (!_endGame)
             {
                 // Draw the game
                 _level.Draw(_spriteBatch);
@@ -135,10 +166,16 @@ namespace Game1
             }
             else
             {
-                string text = string.Format("END OF THE GAME");
-                int width = _graphics.PreferredBackBufferWidth / 4;
-                int height = _graphics.PreferredBackBufferHeight / 2;
-                _spriteBatch.DrawString(_font, text, new Vector2(width, height), Color.White);
+                if (_player.CurrentLives <= 0)
+                {
+                    Vector2 position = new Vector2((_graphics.PreferredBackBufferWidth - _looseTexture.Width) / 2, (_graphics.PreferredBackBufferHeight - _looseTexture.Height) / 2);
+                    _spriteBatch.Draw(_looseTexture, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+                }
+                else
+                {
+                    Vector2 position = new Vector2((_graphics.PreferredBackBufferWidth - _winTexture.Width) / 2, (_graphics.PreferredBackBufferHeight - _winTexture.Height) / 2);
+                    _spriteBatch.Draw(_winTexture, position, null, Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+                }
             }
 
             // Stop drawing
@@ -155,6 +192,16 @@ namespace Game1
         private void TowerButtonCallback(Object e, string activatedTowerName)
         {
             _player.TowerType = activatedTowerName;
+        }
+
+        /// <summary>
+        /// Callback when the game is finished (win or loose)
+        /// </summary>
+        /// <param name="e">The sender of the event</param>
+        /// <param name="argument">The event argument</param>
+        private void EndGame(Object e, EventArgs argument)
+        {
+            _endGame = true;
         }
     }
 }

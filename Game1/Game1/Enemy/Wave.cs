@@ -74,7 +74,7 @@ namespace Game1.Enemy
                 _spawnTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
                 // Check if the elapse of time between 2 creation is reached
-                if (_spawnTimer > 1)
+                if (_spawnTimer > 1.5)
                     AddEnemy();
             }
 
@@ -115,7 +115,7 @@ namespace Game1.Enemy
         /// </summary>
         private void AddEnemy()
         {
-            Enemy newEnemy = new Enemy(_enemyTexture, _level.Waypoints.Peek(), 50+(10*_waveNumber), 2+(_waveNumber/3), 0.5f);
+            Enemy newEnemy = new Enemy(_enemyTexture, _level.Waypoints.Peek(), 50+(50*_waveNumber), 2+(_waveNumber/3), 0.6f);
             newEnemy.SetWaypoints(_level.Waypoints);
             _enemiesList.Add(newEnemy);
             _spawnTimer = 0;

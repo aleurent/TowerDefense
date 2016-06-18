@@ -99,3 +99,6 @@ C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\
 C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\thundercloud.png
 C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\Enemy\yoshiegg.png
 C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\toolTip.xnb
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\MarioConfig.xml
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\gameover.png
+C:\Users\leure\Documents\RepoGit\TowerDefense\Game1\Game1\bin\Windows\x86\Debug\Content\Graphics\winner.jpg

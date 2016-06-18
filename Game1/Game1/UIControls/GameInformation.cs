@@ -61,7 +61,7 @@ namespace Game1.UIControls
 
             // Draw the wave number of the finish is game at the end
             spriteBatch.Draw(_waveNumberTexture, new Vector2(_position.X + 50, _moneyTexture.Height + 20));
-            text = string.Format("{0}/{1}", Enemy.WaveManager.getInstance().Round, Enemy.WaveManager.getInstance().WavesNumber);
+            text = string.Format("{0}/{1}", Enemy.WaveManager.GetInstance().Round, Enemy.WaveManager.GetInstance().WavesNumber);
             spriteBatch.DrawString(_font, text, new Vector2(_position.X + 90, _moneyTexture.Height + 25), Color.White);
         }
     }

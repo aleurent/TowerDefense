@@ -70,7 +70,7 @@ namespace Game1.Enemy
         {
             base.Update(gameTime);
 
-            // Update the center to ave the enemy in the middle of the road
+            // Update the center to have the enemy in the middle of the road
             _center = new Vector2(_center.X + Math.Abs(50 - _width) / 2, _center.Y + Math.Abs(50 - _height) / 2);
 
             // Verify where the enemy is, and where he shall go

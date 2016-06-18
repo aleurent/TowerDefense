@@ -23,7 +23,7 @@ namespace Game1.Enemy
         {
         }
 
-        public static WaveManager getInstance()
+        public static WaveManager GetInstance()
         {
             if (_instance == null)
             {
@@ -40,37 +40,42 @@ namespace Game1.Enemy
         private List<Texture2D> _enemyTexture = new List<Texture2D>();
         private Level _level;
         private Player _player;
-        private ContentManager _content;
+        private bool _gameEnd;
 
         //--------- Properties ----------
         public Wave CurrentWave { get { return _wavesQueue.Peek(); } }
         public List<Enemy> Enemies { get { return CurrentWave.Enemies; } }
         public int Round { get { return CurrentWave.RoundNumber + 1; } }
         public int WavesNumber { get { return _numberOfWaves; } }
-        public bool GameEnd { get { return _wavesQueue.Count() == 0; } }
+        public bool GameEnd { get { return _gameEnd; } set { _gameEnd = value; } }
+
+        // Property to manage the end of the game in case of success
+        public EventHandler WinGame = null;
+
+        /// <summary>
+        /// Method to add a new enemy texture inside the list
+        /// </summary>
+        /// <param name="EnemyTextureName">The texture of the enmy to add</param>
+        public void AddEnemyTexture(Texture2D EnemyTextureName)
+        {
+            _enemyTexture.Add(EnemyTextureName);
+        }
 
         /// <summary>
         /// Method to initialise the waveManager
         /// </summary>
         /// <param name="level">Instance of the level</param>
         /// <param name="player">Instance of the player</param>
-        /// <param name="content">Instance of the content manager to load enemy textures</param>
-        public void initialise(Level level, Player player, ContentManager content)
+        public void Initialise(Level level, Player player)
         {
             _level = level;
             _player = player;
-            _content = content;
-            _numberOfWaves = 30;
-
-            // Load enemy textures
-            LoadEnemyTextures();
+            _numberOfWaves = 1;
+            _gameEnd = false;
 
             // Create the wave and add them in the queue
             for (int i = 0; i < _numberOfWaves; ++i)
             {
-                //int initialNumerOfEnemies = 15;
-                //int numberModifier = (i / 2) + 1;
-
                 Wave wave = new Wave(i, 30, level, _player, _enemyTexture.ElementAt(i%_enemyTexture.Count()));
                 _wavesQueue.Enqueue(wave);
             }
@@ -108,7 +113,7 @@ namespace Game1.Enemy
         }
 
         /// <summary>
-        /// Method to start a new wave
+        /// Method to start a new wave or send an evnet in case no new wave exist
         /// </summary>
         public void StartNextWave()
         {
@@ -117,21 +122,8 @@ namespace Game1.Enemy
                 _wavesQueue.Peek().Start();
                 _timeSinceLastWave = 0;
             }
-        }
-
-        private void LoadEnemyTextures()
-        {
-            _enemyTexture.Add(_content.Load<Texture2D>("Content\\Graphics\\Enemy\\banane"));
-            _enemyTexture.Add(_content.Load<Texture2D>("Content\\Graphics\\Enemy\\goomba"));
-            _enemyTexture.Add(_content.Load<Texture2D>("Content\\Graphics\\Enemy\\bobomb"));
-            _enemyTexture.Add(_content.Load<Texture2D>("Content\\Graphics\\Enemy\\bulletbill"));
-            _enemyTexture.Add(_content.Load<Texture2D>("Content\\Graphics\\Enemy\\goombafly"));
-            _enemyTexture.Add(_content.Load<Texture2D>("Content\\Graphics\\Enemy\\blueshellcup"));
-            _enemyTexture.Add(_content.Load<Texture2D>("Content\\Graphics\\Enemy\\piranhaplant"));
-            _enemyTexture.Add(_content.Load<Texture2D>("Content\\Graphics\\Enemy\\redrocket"));
-            _enemyTexture.Add(_content.Load<Texture2D>("Content\\Graphics\\Enemy\\goombatrol"));
-            _enemyTexture.Add(_content.Load<Texture2D>("Content\\Graphics\\Enemy\\thundercloud"));
-            _enemyTexture.Add(_content.Load<Texture2D>("Content\\Graphics\\Enemy\\yoshiegg"));
+            else
+                WinGame?.Invoke(this, EventArgs.Empty);
         }
     }
 }

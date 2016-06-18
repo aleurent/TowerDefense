@@ -29,33 +29,26 @@ namespace Game1.UIControls
         /// <param name="content">The content manager ot retrieve the textures of our button</param>
         /// <param name="position">The position where the button will be drawn.</param>
         /// <param name="contentName">The root name of the content to load.</param>
-        /// <param name="towerName">The name of the tower associated.</param>
-        public TowerButton(ContentManager content, Vector2 position, string contentName, string towerName)
+        /// <param name="toolTip">The tooltip of the button</param>
+        public TowerButton(ContentManager content, Vector2 position, string towerName, string toolTip)
             : base(position)
         {
             // The "Normal" texture for the start button.
-            _texture = content.Load<Texture2D>(contentName);
+            _texture = content.Load<Texture2D>("Content\\Graphics\\Tower\\" + towerName);
             // The "MouseOver" texture for the start button.
-            _hoverTexture = content.Load<Texture2D>(contentName + "_over"); 
+            _hoverTexture = content.Load<Texture2D>("Content\\Graphics\\Tower\\" + towerName + "_over"); 
             // The "Pressed" texture for the start button.
-            _pressedTexture = content.Load<Texture2D>(contentName + "_pressed");
+            _pressedTexture = content.Load<Texture2D>("Content\\Graphics\\Tower\\" + towerName + "_pressed");
 
             // Define the bound of the button
             _bounds = new Rectangle((int)position.X, (int)position.Y, _texture.Width, _texture.Height);
 
+            // Save the tower name
             _towerName = towerName;
 
-            // Generate the tooltip and load the SprteFont for the display
+            // Load the SpriteFont for the display of the tooltip
             _toolTipFont = content.Load<SpriteFont>("Content\\toolTip");
-            Type newTowerType = Type.GetType("Game1.Tower." + _towerName);
-            if (newTowerType != null)
-            {
-                Tower.Tower newTower = (Tower.Tower)Activator.CreateInstance(newTowerType, 
-                                                                             new Object[] { content,
-                                                                                            Vector2.Zero,
-                                                                                            null});
-                _tooltipText = newTower.generateToolTip();
-            }
+            _tooltipText = toolTip;
 
         }
 

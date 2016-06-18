@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 // Xna includes
 using Microsoft.Xna.Framework;
@@ -41,7 +42,8 @@ namespace Game1.UIControls
         /// </summary>
         /// <param name="content">The content manager ot retrieve the textures of our button</param>
         /// <param name="position">The current position of my main panel</param>
-        public Panel(ContentManager content, Vector2 position)
+        /// <param name="towers">list of towers read from the xml configuration file</param>
+        public Panel(ContentManager content, Vector2 position, IEnumerable<XElement> towers)
             : base(position)
         {
             // Define the texture of the main panel
@@ -60,7 +62,7 @@ namespace Game1.UIControls
             _gameInfo = new GameInformation(content, _font, new Vector2 (Position.X + 10, 5));
 
             // Fill the list of tower the user can build
-            fillTowerList(content);
+            FillTowerList(content, towers);
         }
 
         /// <summary>
@@ -112,41 +114,32 @@ namespace Game1.UIControls
         /// Method to fill the list of tower the user can build
         /// </summary>
         /// <param name="content">Instance of the current contentManager</param>
-        private void fillTowerList(ContentManager content)
+        /// <param name="towers">list of towers read from the xml configuration file</param>
+        private void FillTowerList(ContentManager content, IEnumerable<XElement> towers)
         {
-            // weakest towers
-            TowerButton newTower = new TowerButton(content, 
-                                                   new Vector2(Position.X + 45, Position.Y + 160), 
-                                                   "Content\\Graphics\\Tower\\paratroopa", "ParatroopaTower");
-            _towerButton.Add(newTower);
-            newTower = new TowerButton(content,
-                                       new Vector2(Position.X + 140, Position.Y + 160),
-                                       "Content\\Graphics\\Tower\\toad", "ToadTower");
-            _towerButton.Add(newTower);
+            // Initial position of the first tower
+            Vector2 position = new Vector2(_position.X + 20, _position.Y + 160);
 
-            // Middle strength towers
-            newTower = new TowerButton(content,
-                                       new Vector2(Position.X + 45, Position.Y + 230),
-                                       "Content\\Graphics\\Tower\\bones", "BonesTower");
-            _towerButton.Add(newTower);
-            newTower = new TowerButton(content,
-                                       new Vector2(Position.X + 140, Position.Y + 230),
-                                       "Content\\Graphics\\Tower\\marioYoshi", "MarioYoshiTower");
-            _towerButton.Add(newTower);
+            // Read the list of towers from the input xml file
+            foreach (XElement tower in towers)
+            {
+                // Define the position depending the previous position and the size of the panel
+                if(position.X + 50 >= _position.X + _texture.Width - 20)
+                {
+                    position.X = _position.X + 20;
+                    position.Y = position.Y + 70;
+                }
 
-            // Strongest tower
-            newTower = new TowerButton(content,
-                                       new Vector2(Position.X + 5, Position.Y + 305),
-                                       "Content\\Graphics\\Tower\\donkeykong", "DonkeyKongTower");
-            _towerButton.Add(newTower);
-            newTower = new TowerButton(content,
-                                       new Vector2(Position.X + 80, Position.Y + 305),
-                                       "Content\\Graphics\\Tower\\browser", "BrowserTower");
-            _towerButton.Add(newTower);
-            newTower = new TowerButton(content,
-                                       new Vector2(Position.X + 160, Position.Y + 305),
-                                       "Content\\Graphics\\Tower\\wario", "WarioTower");
-            _towerButton.Add(newTower);
+                // Retrieve the texture name of the tower
+                string towerTexture = tower.Element("Texture").Value;
+
+                // Create the tower button
+                TowerButton newTower = new TowerButton(content, position, towerTexture, Tower.Tower.GenerateToolTip(tower));
+                _towerButton.Add(newTower);
+
+                // Update the position for next tower
+                position.X = position.X + 70;
+            }
         }
     }
 }

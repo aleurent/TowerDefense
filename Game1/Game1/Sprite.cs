@@ -42,8 +42,11 @@ namespace Game1
         /// <param name="position">Position of the sprite to create</param>
         public Sprite(Vector2 position)
         {
+            _texture = null;
             _position = position;
             _velocity = Vector2.Zero;
+            _center = Vector2.Zero;
+            _origin = Vector2.Zero;
         }
 
         /// <summary>

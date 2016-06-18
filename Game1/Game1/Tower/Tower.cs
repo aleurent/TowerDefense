@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,9 +36,15 @@ namespace Game1.Tower
         /// </summary>
         /// <param name="position">Position where to create the tower</param>
         /// <param name="bulletTexture">Texture of the bullet to display</param>
-        public Tower(Vector2 position, Texture2D bulletTexture) : base(position)
+        /// <param name="tower">Tower element from the input xlm file</param>
+        public Tower(Vector2 position, Texture2D bulletTexture, Texture2D texture, XElement tower) 
+            : base(texture, position)
         {
             _bulletTexture = bulletTexture;
+            _cost = Int32.Parse(tower.Element("cost").Value);
+            _speed = float.Parse(tower.Element("speed").Value);
+            _damage = Int32.Parse(tower.Element("damage").Value);
+            _range = float.Parse(tower.Element("range").Value);
         }
 
         /// <summary>
@@ -53,7 +60,7 @@ namespace Game1.Tower
             _bulletTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // Update the target
-            updateTarget(enemies);
+            UpdateTarget(enemies);
 
             // If target is null reset the bulletTimer
             if (_target == null)
@@ -67,7 +74,7 @@ namespace Game1.Tower
             else
             {
                 // Retrieve the new rotation to go to the target
-                float rotationToTarget = getRotationToTarget();
+                float rotationToTarget = GetRotationToTarget();
 
                 if (_bulletTimer >= _speed)
                 {
@@ -81,12 +88,14 @@ namespace Game1.Tower
                 List<Bullet> curBulletList = _bulletList.ToList();
                 foreach (Bullet curBullet in curBulletList)
                 {
-                    curBullet.SetRotation(rotationToTarget);
+                    if(rotationToTarget != 0.0)
+                        curBullet.SetRotation(rotationToTarget);
+
                     curBullet.Update(gameTime);
 
                     // If the bullet is at destination (target), we kill it and we update the target life
                     if (_target != null &&
-                        Vector2.Distance(curBullet.Center, _target.Center) < _target.Width)
+                        Vector2.Distance(curBullet.Center, _target.Center) < _target.Width / 2)
                     {
                         _target.CurrentHealth -= curBullet.Damage;
                         curBullet.Kill();
@@ -107,16 +116,17 @@ namespace Game1.Tower
                 bullet.Draw(spriteBatch);
         }
 
-        public string generateToolTip()
+        static public string GenerateToolTip(XElement tower)
         {
             // Add the cost of the tower
-            string toolTip = String.Format("Cost: {0} - ", _cost);
+            string toolTip = String.Format("Cost: {0} - ", tower.Element("cost").Value);
 
             // Add the damage
             string stringToAdd = "small";
-            if (_damage <= 10)
+            int damage = Int32.Parse(tower.Element("damage").Value);
+            if (damage <= 10)
                 stringToAdd = "small";
-            else if (_damage > 100)
+            else if (damage > 100)
                 stringToAdd = "high";
             else
                 stringToAdd = "medium";
@@ -124,9 +134,10 @@ namespace Game1.Tower
 
             // Add the speed
             stringToAdd = "small";
-            if (_speed > 0.8f)
+            float speed = float.Parse(tower.Element("speed").Value);
+            if (speed > 0.8f)
                 stringToAdd = "small";
-            else if (_speed <= 0.2f)
+            else if (speed <= 0.2f)
                 stringToAdd = "high";
             else
                 stringToAdd = "medium";
@@ -134,9 +145,10 @@ namespace Game1.Tower
 
             // Add the range
             stringToAdd = "small";
-            if (_damage <= 10)
+            float range = float.Parse(tower.Element("range").Value);
+            if (range <= 10)
                 stringToAdd = "small";
-            else if (_damage > 100)
+            else if (range > 100)
                 stringToAdd = "huge";
             else
                 stringToAdd = "medium";
@@ -162,17 +174,16 @@ namespace Game1.Tower
         /// Method that allows to find the closest enemies of the tower from the list
         /// </summary>
         /// <param name="enemies">List of enemies present in the game</param>
-        private void GetClosestEnemy(List<Enemy.Enemy> enemies)
+        private void GetFirstEnemyInRange(List<Enemy.Enemy> enemies)
         {
             _target = null;
-            float smallestRange = _range;
 
             foreach (Enemy.Enemy enemy in enemies)
             {
-                if (Vector2.Distance(_center, enemy.Center) < smallestRange)
+                if (Vector2.Distance(_center, enemy.Center) < _range)
                 {
-                    smallestRange = Vector2.Distance(_center, enemy.Center);
                     _target = enemy;
+                    break;
                 }
             }
         }
@@ -181,7 +192,7 @@ namespace Game1.Tower
         /// Method that return the rotation needed to face the target
         /// </summary>
         /// <returns>The computed rotation</returns>
-        private float getRotationToTarget()
+        private float GetRotationToTarget()
         {
             float rotation = 0.0f;
             if (_target != null)
@@ -198,14 +209,14 @@ namespace Game1.Tower
         /// Method that update the current target if needed
         /// </summary>
         /// <param name="enemies">The list of enemies in which we have to find the new target</param>
-        private void updateTarget(List<Enemy.Enemy> enemies)
+        private void UpdateTarget(List<Enemy.Enemy> enemies)
         {
             // Check the existing target and get a new one if needed
             if (_target == null)
-                GetClosestEnemy(enemies);
+                GetFirstEnemyInRange(enemies);
 
             else if(_target != null && (!IsInRange(_target.Center) || _target.IsDead))
-                GetClosestEnemy(enemies);
+                GetFirstEnemyInRange(enemies);
         }
     }
 }
